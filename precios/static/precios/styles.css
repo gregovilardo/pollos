@@ -1,0 +1,11 @@
+.ordenado{
+    border:3px solid rgb(0, 110, 255);
+}
+
+.si{
+    border:3px solid rgb(60, 255, 0);
+}
+
+.no{
+    border:3px solid rgb(255, 30, 0);
+}

@@ -1,0 +1,24 @@
+{% extends 'precios/layout.html' %}
+
+{% block title %}Cambio de Precios{% endblock title %}
+
+{% block body %}
+    <form class="m-2" action"{% url 'cambio_precios' %}" method="POST">
+    {% csrf_token %}
+        {% for producto in productos %}
+            <h5 class="m-2">{{producto.nombre}}: ${{producto.precio}}</h5>
+        {% endfor %}
+        <select class="m-2" name="productos">
+            {% for producto in productos %}
+            <option value="{{producto.pk}}">{{producto.nombre}}</option>
+            {% endfor %}
+        </select>
+        <p></p>
+        {{ form }}
+        <p></p>
+    <button class="m-2 btn btn-primary" type="submit">Cambiar</button>
+    {% if msj %}
+        <h6><p class="m-2" >{{msj}}</p></h6>
+    {% endif %}
+    <div>
+{% endblock body %}

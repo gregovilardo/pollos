@@ -1,0 +1,52 @@
+{% extends 'precios/layout.html' %}
+
+{% block title %}Crear Orden{% endblock title %}
+
+{% block body %}
+<div class="container m-2">
+    <form action="{% url 'crear_orden' %}" method="POST">
+    {% csrf_token %}
+        <select class="m-2" name="clientes">
+            {% for cliente in clientes %}
+            <option value="{{cliente.pk}}">{{cliente.nombre}}</option>
+            {% endfor %}
+        </select>
+        <p></p>
+        Milanesa Pollo: {{form.Mp}}
+        <p></p>
+        Pata Muslo: {{form.Pa}}
+        <p></p>
+        Alita: {{form.A}}
+        <p></p>
+        Pechuga: {{form.Pe}}
+        <p></p>
+        Cajon Rosario: {{form.Cr}}
+        <p></p>
+        Cajon Glaciar: {{form.Cg}}
+        <p></p>
+        Hamburguesa Pollo: {{form.Hp}}
+        <p></p>
+        Menudo: {{form.M}}
+        <p></p>
+        Pollo: {{form.Po}}
+        <p></p>
+        Carcasa: {{form.C}}
+        <p></p>
+        Mv: {{form.Mv}}
+        <p></p>
+        Mc: {{form.Mc}}
+        <p></p>
+        Pe Fileteada: {{form.PeF}}
+        <p></p>
+        PM Deshuesada: {{form.PaD}}
+        <p></p>
+        Trocitos: {{form.Troc}}
+        <p></p>
+        
+        <button class="m-2 btn btn-primary" type="submit">Crear</button>
+    </form>
+    {% if mensaje %}
+    <h6><p class="m-2" >{{mensaje}}</p></h6>
+    {% endif %}
+</div>
+{% endblock body %}

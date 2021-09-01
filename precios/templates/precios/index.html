@@ -1,0 +1,73 @@
+{% extends 'precios/layout.html' %}
+{% load static %}
+
+{% block title %}Ordenes Pollos{% endblock title %}
+
+{% block body %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Mp</th>
+      <th scope="col">Pa</th>
+      <th scope="col">A</th>
+      <th scope="col">Pe</th>
+      <th scope="col">Cr</th>
+      <th scope="col">Cg</th>
+      <th scope="col">Hp</th>
+      <th scope="col">Po</th>
+      <th scope="col">M</th>
+      <th scope="col">C</th>
+      <th scope="col">Mv</th>
+      <th scope="col">Mc</th>
+      <th scope="col">PeF</th>
+      <th scope="col">PaD</th>
+      <th scope="col">Troc</th>
+      <th scope="col">Total</th>
+      <th scope="col">Entregado</th>
+      <th scope="col">Cobrado</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for orden in ordenes %}
+    <tr>
+      <th scope="row"><a href="{% url 'ver_orden' id=orden.pk %}">{{orden.pk}}</a></th>
+      <td>{{orden.cliente.nombre}}</td>
+      <td>{{orden.Mp}}</td>
+      <td>{{orden.Pa}}</td>
+      <td>{{orden.A}}</td>
+      <td>{{orden.Pe}}</td>
+      <td>{{orden.Cr}}</td>
+      <td>{{orden.Cg}}</td>
+      <td>{{orden.Hp}}</td>
+      <td>{{orden.Po}}</td>
+      <td>{{orden.M}}</td>
+      <td>{{orden.C}}</td>
+      <td>{{orden.Mv}}</td>
+      <td>{{orden.Mc}}</td>
+      <td>{{orden.PeF}}</td>
+      <td>{{orden.PaD}}</td>
+      <td>{{orden.Troc}}</td>
+      {% if orden.total > 0 %}
+      <td class="ordenado">{{orden.total}}</td>
+      {% else %}
+      <td>{{orden.total}}</td>
+      {% endif %}
+
+      {% if orden.entregado %}
+        <td class="si">SI</td>
+        {% else %}
+        <td class="no">NO</td>
+      {% endif %}
+      {% if orden.cobrado %}
+        <td class="si">SI</td>
+        {% else %}
+        <td class="no">NO</td>
+      {% endif %}
+    </tr>
+
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}
